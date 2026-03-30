@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A & Y ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+/* lock screen */
+#lockScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #ff4b7d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: #ff4b7d;
+    cursor: pointer;
+}
+
+/* main */
+#mainContent {
+    display: none;
+    padding: 30px;
+}
+
+/* floating hearts */
+.heart {
+    position: fixed;
+    animation: float 6s linear infinite;
+}
+@keyframes float {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(-10vh); }
+}
+
+/* typing */
+.typing {
+    border-right: 2px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 6s steps(60, end) forwards;
+}
+@keyframes typing {
+    to { width: 100% }
+}
+
+.section {
+    margin: 40px auto;
+    max-width: 700px;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* sticker images */
+.sticker {
+    width: 120px;
+    margin: 10px;
+}
+
+/* hidden */
+.hidden {
+    display: none;
+    margin-top: 20px;
+    font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 PASSWORD LOCK -->
+<div id="lockScreen">
+    <h2>🔐 Enter our date 💖</h2>
+    <input type="password" id="password" placeholder="hint: 01042020">
+    <button onclick="unlock()">Unlock ❤️</button>
+</div>
+
+<!-- 🎶 MUSIC -->
+<audio id="music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<!-- 💖 MAIN -->
+<div id="mainContent">
+
+<h1>💖 A & Y 💖</h1>
+<h2>6 Years of Us ✨</h2>
+
+<div class="section typing">
+Ahhh… Jan 20 2020 💫  
+Biochem class 👀  
+One look… and something changed forever ❤️
+</div>
+
+<img class="sticker" src="https://cdn-icons-png.flaticon.com/512/833/833472.png">
+
+<div class="section">
+March 31 🌙  
+Storm 🌧️ tears 💔  
+Felt like the end…  
+But April 1 🌅  
+We chose LOVE again 💖
+</div>
+
+<img class="sticker" src="https://cdn-icons-png.flaticon.com/512/742/742751.png">
+
+<div class="section">
+6 years later 💫  
+Still US 🫶  
+Still fighting… still loving… still forever ❤️
+</div>
+
+<div class="section">
+🏥 You came to my hospital visits  
+✈️ tracked my 10hr flight  
+🏍️ bike rides = our therapy  
+🏡 Davao room = HOME ❤️
+</div>
+
+<img class="sticker" src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+
+<div class="section">
+🎁 AirPods surprise 😂  
+🖊️ Apple Pencil anniversary 🥹  
+🎉 Birthday resort plan 💖  
+🚪 Me at your door = shock 😂
+</div>
+
+<div class="section">
+You… 😌  
+Never surprise me  
+Because you KNOW me ❤️  
+But that one time…  
+📱 iPad + April 1 💖✨
+</div>
+
+<div class="section">
+24 hrs travel just to see me 🥹  
+6 hrs journey just to be together ❤️  
+That’s US 💫
+</div>
+
+<div class="section">
+1000 reasons I hate you 😤  
+1 reason I love you ❤️  
+And that ONE reason…  
+is enough forever ♾️
+</div>
+
+<button onclick="showSecret()">Click me 💌</button>
+
+<div id="secret" class="hidden">
+You are my home 🏡  
+My peace 🤍  
+My forever ♾️  
+— A 💕
+</div>
+
+</div>
+
+<script>
+function unlock() {
+    let pass = document.getElementById("password").value;
+    if(pass === "01042020") {
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+        document.getElementById("music").play();
+    } else {
+        alert("Wrong password 😝");
+    }
+}
+
+function showSecret() {
+    document.getElementById("secret").style.display = "block";
+}
+
+/* hearts */
+for (let i = 0; i < 25; i++) {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💖";
+    h.style.left = Math.random()*100 + "vw";
+    h.style.fontSize = (10 + Math.random()*20) + "px";
+    h.style.animationDuration = (3 + Math.random()*5) + "s";
+    document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>
