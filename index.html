@@ -6,207 +6,281 @@
 
 <style>
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    margin:0;
+    font-family: 'Georgia', serif;
+    background: black;
     color: white;
-    overflow-x: hidden;
-    text-align: center;
+    text-align:center;
+    overflow-x:hidden;
 }
 
-/* lock screen */
-#lockScreen {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #ff4b7d;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* intro */
+#intro {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    cursor:pointer;
 }
-input {
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-}
-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    background: white;
-    color: #ff4b7d;
-    cursor: pointer;
+
+/* lock */
+#lock {
+    display:none;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
 }
 
 /* main */
-#mainContent {
-    display: none;
-    padding: 30px;
+#main {
+    display:none;
 }
 
-/* floating hearts */
-.heart {
-    position: fixed;
-    animation: float 6s linear infinite;
+/* stars */
+.star {
+    position:fixed;
+    width:2px;
+    height:2px;
+    background:white;
+    animation:twinkle 3s infinite;
 }
-@keyframes float {
-    0% { transform: translateY(100vh); }
-    100% { transform: translateY(-10vh); }
+@keyframes twinkle {50%{opacity:0.2;}}
+
+/* shooting stars */
+.shoot {
+    position:fixed;
+    width:100px;
+    height:2px;
+    background:white;
+    animation:shoot 2s linear infinite;
 }
+@keyframes shoot {
+    from {transform:translateX(-100vw);}
+    to {transform:translateX(100vw);}
+}
+
+/* section */
+.section {
+    opacity:0;
+    transform:translateY(40px);
+    transition:1.5s;
+    margin:60px auto;
+    max-width:700px;
+}
+.show {opacity:1; transform:translateY(0);}
 
 /* typing */
 .typing {
-    border-right: 2px solid white;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    animation: typing 6s steps(60, end) forwards;
+    border-right:2px solid white;
+    white-space:nowrap;
+    overflow:hidden;
+    width:0;
+    animation:typing 6s steps(60,end) forwards;
 }
-@keyframes typing {
-    to { width: 100% }
+@keyframes typing {to{width:100%;}}
+
+/* chat */
+.chat {
+    background:#1a1a2e;
+    padding:10px;
+    margin:8px;
+    border-radius:15px;
+    text-align:left;
 }
 
-.section {
-    margin: 40px auto;
-    max-width: 700px;
-    font-size: 18px;
-    line-height: 1.8;
+/* button */
+button {
+    padding:12px 20px;
+    border:none;
+    border-radius:25px;
+    margin-top:20px;
 }
 
-/* sticker images */
-.sticker {
-    width: 120px;
-    margin: 10px;
+/* hearts explosion */
+.heart {
+    position:fixed;
+    color:red;
+    animation:explode 2s linear forwards;
 }
-
-/* hidden */
-.hidden {
-    display: none;
-    margin-top: 20px;
-    font-size: 20px;
+@keyframes explode {
+    from {transform:translateY(0);}
+    to {transform:translateY(-200px); opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔐 PASSWORD LOCK -->
-<div id="lockScreen">
-    <h2>🔐 Enter our date 💖</h2>
-    <input type="password" id="password" placeholder="hint: 01042020">
-    <button onclick="unlock()">Unlock ❤️</button>
+<!-- INTRO -->
+<div id="intro" onclick="start()">
+🌙 Tap to begin something special…
 </div>
 
-<!-- 🎶 MUSIC -->
+<!-- LOCK -->
+<div id="lock">
+<h2>🔐 Enter our date</h2>
+<input type="password" id="pass" placeholder="01042020">
+<button onclick="unlock()">Enter ❤️</button>
+</div>
+
+<!-- MUSIC -->
 <audio id="music" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
 </audio>
 
-<!-- 💖 MAIN -->
-<div id="mainContent">
+<!-- MAIN -->
+<div id="main">
 
-<h1>💖 A & Y 💖</h1>
-<h2>6 Years of Us ✨</h2>
+<h1>🌙 A & Y 🌙</h1>
+<h3 id="timer"></h3>
 
 <div class="section typing">
-Ahhh… Jan 20 2020 💫  
-Biochem class 👀  
-One look… and something changed forever ❤️
-</div>
-
-<img class="sticker" src="https://cdn-icons-png.flaticon.com/512/833/833472.png">
-
-<div class="section">
-March 31 🌙  
-Storm 🌧️ tears 💔  
-Felt like the end…  
-But April 1 🌅  
-We chose LOVE again 💖
-</div>
-
-<img class="sticker" src="https://cdn-icons-png.flaticon.com/512/742/742751.png">
-
-<div class="section">
-6 years later 💫  
-Still US 🫶  
-Still fighting… still loving… still forever ❤️
+Ahhh… it all started on January 20, 2020…
+A normal biochemistry class…
+And then… I saw you ❤️
 </div>
 
 <div class="section">
-🏥 You came to my hospital visits  
-✈️ tracked my 10hr flight  
-🏍️ bike rides = our therapy  
-🏡 Davao room = HOME ❤️
+We started talking every day…
+Slowly… you became my home 💫
 </div>
 
-<img class="sticker" src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+<img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" width="120">
 
 <div class="section">
-🎁 AirPods surprise 😂  
-🖊️ Apple Pencil anniversary 🥹  
-🎉 Birthday resort plan 💖  
-🚪 Me at your door = shock 😂
+March 31… a storm 🌧️  
+We broke… we cried…  
+But April 1… we chose each other again ❤️
 </div>
 
 <div class="section">
-You… 😌  
-Never surprise me  
-Because you KNOW me ❤️  
-But that one time…  
-📱 iPad + April 1 💖✨
+6 years later… still us 🫶
 </div>
 
 <div class="section">
-24 hrs travel just to see me 🥹  
-6 hrs journey just to be together ❤️  
-That’s US 💫
+🏥 Hospital visits… you stayed  
+✈️ 10hr flight… you tracked  
+🏍️ rides… our peace  
+🏡 Davao… our home  
 </div>
 
 <div class="section">
-1000 reasons I hate you 😤  
+That resort surprise…  
+The way you were shocked…  
+I’ll never forget that moment 💖
+</div>
+
+<div class="section">
+🎧 AirPods surprise 😂  
+🖊️ Apple Pencil… when we couldn’t meet  
+🎉 Birthday… best day  
+🚪 Me at your door… unforgettable  
+</div>
+
+<div class="section">
+You always understand me…  
+But that iPad… that April 1…  
+That meant everything 💖
+</div>
+
+<div class="section">
+24 hours… just to see me  
+6 hours… just to be together ❤️
+</div>
+
+<div class="section">
+1000 reasons I fight with you 😤  
 1 reason I love you ❤️  
-And that ONE reason…  
-is enough forever ♾️
+And that one reason… is forever ♾️
 </div>
 
-<button onclick="showSecret()">Click me 💌</button>
+<!-- CHAT -->
+<div class="section">
+<div class="chat">You: Did you eat?</div>
+<div class="chat">Me: Only if you did ❤️</div>
+<div class="chat">You: Take care</div>
+<div class="chat">Me: Stay forever 🥹</div>
+</div>
 
-<div id="secret" class="hidden">
-You are my home 🏡  
-My peace 🤍  
-My forever ♾️  
+<button onclick="finale()">Final message 💌</button>
+
+<div id="end" style="display:none;">
+You are my home…  
+My peace…  
+My forever…  
 — A 💕
 </div>
 
 </div>
 
 <script>
-function unlock() {
-    let pass = document.getElementById("password").value;
-    if(pass === "01042020") {
-        document.getElementById("lockScreen").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-        document.getElementById("music").play();
-    } else {
-        alert("Wrong password 😝");
-    }
+function start(){
+document.getElementById("intro").style.display="none";
+document.getElementById("lock").style.display="flex";
 }
 
-function showSecret() {
-    document.getElementById("secret").style.display = "block";
+function unlock(){
+if(document.getElementById("pass").value==="01042020"){
+document.getElementById("lock").style.display="none";
+document.getElementById("main").style.display="block";
+document.getElementById("music").play();
+}
 }
 
-/* hearts */
-for (let i = 0; i < 25; i++) {
-    let h = document.createElement("div");
-    h.className = "heart";
-    h.innerHTML = "💖";
-    h.style.left = Math.random()*100 + "vw";
-    h.style.fontSize = (10 + Math.random()*20) + "px";
-    h.style.animationDuration = (3 + Math.random()*5) + "s";
-    document.body.appendChild(h);
+/* stars */
+for(let i=0;i<120;i++){
+let s=document.createElement("div");
+s.className="star";
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+document.body.appendChild(s);
+}
+
+/* shooting stars */
+setInterval(()=>{
+let sh=document.createElement("div");
+sh.className="shoot";
+sh.style.top=Math.random()*100+"vh";
+document.body.appendChild(sh);
+setTimeout(()=>sh.remove(),2000);
+},2000);
+
+/* reveal */
+let sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight-50){
+sec.classList.add('show');
+}
+});
+});
+
+/* timer */
+let startDate=new Date("2020-01-20");
+setInterval(()=>{
+let now=new Date();
+let years=Math.floor((now-startDate)/(1000*60*60*24*365));
+document.getElementById("timer").innerText=
+years+" years of us ❤️";
+},1000);
+
+/* finale hearts */
+function finale(){
+document.getElementById("end").style.display="block";
+for(let i=0;i<30;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"vw";
+h.style.top="80vh";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),2000);
+}
 }
 </script>
 
