@@ -2,218 +2,297 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>A & Y ❤️</title>
+<title>A & Y</title>
+
+<!-- romantic font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Dancing+Script&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin:0;
-    font-family: 'Georgia', serif;
-    background: black;
-    color: white;
-    text-align:center;
-    overflow-x:hidden;
+body{
+margin:0;
+background:#0d0d14;
+color:#f5f5f5;
+font-family:'Playfair Display', serif;
+text-align:center;
 }
 
 /* intro */
-#intro {
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:black;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:24px;
-    cursor:pointer;
+#intro{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:20px;
+letter-spacing:1px;
+cursor:pointer;
 }
 
 /* lock */
-#lock {
-    display:none;
-    height:100vh;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
+#lock{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
 }
 
 /* main */
-#main {
-    display:none;
+#main{
+display:none;
+padding:30px 20px;
 }
 
-/* stars */
-.star {
-    position:fixed;
-    width:2px;
-    height:2px;
-    background:white;
-    animation:twinkle 3s infinite;
-}
-@keyframes twinkle {50%{opacity:0.2;}}
-
-/* shooting stars */
-.shoot {
-    position:fixed;
-    width:100px;
-    height:2px;
-    background:white;
-    animation:shoot 2s linear infinite;
-}
-@keyframes shoot {
-    from {transform:translateX(-100vw);}
-    to {transform:translateX(100vw);}
+/* title */
+h2{
+font-family:'Dancing Script', cursive;
+font-size:32px;
+margin-bottom:30px;
 }
 
-/* section */
-.section {
-    opacity:0;
-    transform:translateY(40px);
-    transition:1.5s;
-    margin:60px auto;
-    max-width:700px;
+/* sections */
+.section{
+opacity:0;
+transform:translateY(30px);
+transition:1.5s ease;
+margin:40px auto;
+max-width:650px;
+line-height:1.8;
+font-size:17px;
 }
-.show {opacity:1; transform:translateY(0);}
+.show{
+opacity:1;
+transform:translateY(0);
+}
 
-/* typing */
-.typing {
-    border-right:2px solid white;
-    white-space:nowrap;
-    overflow:hidden;
-    width:0;
-    animation:typing 6s steps(60,end) forwards;
+/* divider */
+.divider{
+margin:30px auto;
+width:40px;
+height:1px;
+background:#444;
 }
-@keyframes typing {to{width:100%;}}
 
 /* chat */
-.chat {
-    background:#1a1a2e;
-    padding:10px;
-    margin:8px;
-    border-radius:15px;
-    text-align:left;
+.chat{
+background:#1a1a2e;
+padding:10px 14px;
+margin:8px auto;
+border-radius:12px;
+max-width:400px;
+text-align:left;
+font-size:14px;
+}
+
+/* input */
+input{
+padding:10px;
+border-radius:10px;
+border:none;
+background:#1a1a2e;
+color:white;
 }
 
 /* button */
-button {
-    padding:12px 20px;
-    border:none;
-    border-radius:25px;
-    margin-top:20px;
+button{
+margin-top:15px;
+padding:10px 18px;
+border:none;
+border-radius:20px;
+background:#1a1a2e;
+color:white;
+cursor:pointer;
 }
 
-/* hearts explosion */
-.heart {
-    position:fixed;
-    color:red;
-    animation:explode 2s linear forwards;
-}
-@keyframes explode {
-    from {transform:translateY(0);}
-    to {transform:translateY(-200px); opacity:0;}
+/* hidden msg */
+.hidden{
+display:none;
+margin-top:20px;
+font-size:17px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
+<!-- intro -->
 <div id="intro" onclick="start()">
-🌙 Tap to begin something special…
+begin
 </div>
 
-<!-- LOCK -->
+<!-- lock -->
 <div id="lock">
-<h2>🔐 Enter our date</h2>
+<h3>enter our date</h3>
 <input type="password" id="pass" placeholder="01042020">
-<button onclick="unlock()">Enter ❤️</button>
+<button onclick="unlock()">enter</button>
 </div>
 
-<!-- MUSIC -->
+<!-- music -->
 <audio id="music" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3">
 </audio>
 
-<!-- MAIN -->
+<!-- main -->
 <div id="main">
 
-<h1>🌙 A & Y 🌙</h1>
-<h3 id="timer"></h3>
-
-<div class="section typing">
-Ahhh… it all started on January 20, 2020…
-A normal biochemistry class…
-And then… I saw you ❤️
-</div>
+<h2>our story</h2>
 
 <div class="section">
-We started talking every day…
-Slowly… you became my home 💫
+It all started on January 20, 2020.  
+A normal day, a normal class… but something about that moment stayed with me.  
+That was the first time I saw you, and somehow, everything began there.
 </div>
 
-<img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" width="120">
+<div class="divider"></div>
 
 <div class="section">
-March 31… a storm 🌧️  
-We broke… we cried…  
-But April 1… we chose each other again ❤️
+We started talking, slowly and consistently.  
+Without even realizing it, you became a part of my everyday life…  
+not just someone I spoke to, but someone I felt connected to.
 </div>
+
+<div class="divider"></div>
 
 <div class="section">
-6 years later… still us 🫶
+Then came March 31.  
+A night that felt like everything was falling apart.  
+We fought, we broke, and it felt like we were losing each other.  
+
+But the very next day, April 1…  
+we chose each other again.  
+Not out of convenience, but because we truly meant to stay.
 </div>
+
+<div class="divider"></div>
 
 <div class="section">
-🏥 Hospital visits… you stayed  
-✈️ 10hr flight… you tracked  
-🏍️ rides… our peace  
-🏡 Davao… our home  
+And today, after 6 years…  
+after everything we’ve been through…  
+we are still here, standing stronger than ever.
 </div>
+
+<div class="divider"></div>
 
 <div class="section">
-That resort surprise…  
-The way you were shocked…  
-I’ll never forget that moment 💖
+You showed up for me when it mattered the most.  
+Coming to my hospital visits, standing beside me quietly…  
+but with a strength that I could always feel.
 </div>
+
+<div class="divider"></div>
 
 <div class="section">
-🎧 AirPods surprise 😂  
-🖊️ Apple Pencil… when we couldn’t meet  
-🎉 Birthday… best day  
-🚪 Me at your door… unforgettable  
+When I was travelling to India,  
+you tracked my entire journey…  
+as if your heart was travelling with me.
 </div>
+
+<div class="divider"></div>
 
 <div class="section">
-You always understand me…  
-But that iPad… that April 1…  
-That meant everything 💖
+Our bike rides were simple,  
+but they meant everything.  
+In those moments, it was just us…  
+and that felt like peace.
 </div>
+
+<div class="divider"></div>
 
 <div class="section">
-24 hours… just to see me  
-6 hours… just to be together ❤️
+Some surprises stayed with me forever…  
+like the day I gave you the AirPods  
+and the look on your face said everything.
 </div>
+
+<div class="divider"></div>
 
 <div class="section">
-1000 reasons I fight with you 😤  
-1 reason I love you ❤️  
-And that one reason… is forever ♾️
+That one anniversary…  
+we couldn’t even meet.  
+But still, I wanted you to feel loved.  
+And those small efforts… still make me emotional.
 </div>
 
-<!-- CHAT -->
+<div class="divider"></div>
+
 <div class="section">
-<div class="chat">You: Did you eat?</div>
-<div class="chat">Me: Only if you did ❤️</div>
-<div class="chat">You: Take care</div>
-<div class="chat">Me: Stay forever 🥹</div>
+Your birthday… that resort surprise…  
+your happiness in that moment  
+became one of my favorite memories.
 </div>
 
-<button onclick="finale()">Final message 💌</button>
+<div class="divider"></div>
 
-<div id="end" style="display:none;">
-You are my home…  
-My peace…  
-My forever…  
-— A 💕
+<div class="section">
+And the day I came to your house…  
+and stood right in front of you…  
+I don’t think I’ll ever forget that reaction.
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+You don’t really surprise me often…  
+because you understand me so well.  
+But that one time…  
+that meant everything to me.
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+We travelled distances just to be together.  
+And somehow… that always felt worth it.
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+We built a life together in Davao.  
+That room… wasn’t just a place.  
+It became home.
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+We lived everything together…  
+the good, the bad, the happy, the painful.  
+Like a complete life of our own.
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+There may be a thousand reasons I get angry at you…  
+but there is one reason I love you.  
+And that one reason is enough for me to stay.
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+I’m not asking for anything.  
+Just stay beside me… always.
+</div>
+
+<!-- chat -->
+<div class="section">
+<div class="chat">Did you eat?</div>
+<div class="chat">Only if you did.</div>
+<div class="chat">Take care.</div>
+<div class="chat">Stay with me.</div>
+</div>
+
+<button onclick="showMsg()">final</button>
+
+<div id="msg" class="hidden">
+You are my home.  
+My peace.  
+My forever.  
+— A
 </div>
 
 </div>
@@ -232,25 +311,6 @@ document.getElementById("music").play();
 }
 }
 
-/* stars */
-for(let i=0;i<120;i++){
-let s=document.createElement("div");
-s.className="star";
-s.style.left=Math.random()*100+"vw";
-s.style.top=Math.random()*100+"vh";
-document.body.appendChild(s);
-}
-
-/* shooting stars */
-setInterval(()=>{
-let sh=document.createElement("div");
-sh.className="shoot";
-sh.style.top=Math.random()*100+"vh";
-document.body.appendChild(sh);
-setTimeout(()=>sh.remove(),2000);
-},2000);
-
-/* reveal */
 let sections=document.querySelectorAll('.section');
 window.addEventListener('scroll',()=>{
 sections.forEach(sec=>{
@@ -260,27 +320,8 @@ sec.classList.add('show');
 });
 });
 
-/* timer */
-let startDate=new Date("2020-01-20");
-setInterval(()=>{
-let now=new Date();
-let years=Math.floor((now-startDate)/(1000*60*60*24*365));
-document.getElementById("timer").innerText=
-years+" years of us ❤️";
-},1000);
-
-/* finale hearts */
-function finale(){
-document.getElementById("end").style.display="block";
-for(let i=0;i<30;i++){
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💖";
-h.style.left=Math.random()*100+"vw";
-h.style.top="80vh";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),2000);
-}
+function showMsg(){
+document.getElementById("msg").style.display="block";
 }
 </script>
 
