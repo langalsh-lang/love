@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>A & Y</title>
 
-<!-- romantic font -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Dancing+Script&display=swap" rel="stylesheet">
 
 <style>
@@ -14,9 +13,9 @@ background:#0d0d14;
 color:#f5f5f5;
 font-family:'Playfair Display', serif;
 text-align:center;
+overflow-x:hidden;
 }
 
-/* intro */
 #intro{
 position:fixed;
 width:100%;
@@ -26,11 +25,9 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-size:20px;
-letter-spacing:1px;
 cursor:pointer;
 }
 
-/* lock */
 #lock{
 display:none;
 height:100vh;
@@ -39,46 +36,47 @@ align-items:center;
 flex-direction:column;
 }
 
-/* main */
 #main{
 display:none;
 padding:30px 20px;
 }
 
-/* title */
 h2{
 font-family:'Dancing Script', cursive;
 font-size:32px;
 margin-bottom:30px;
 }
 
-/* sections */
 .section{
 opacity:0;
 transform:translateY(30px);
 transition:1.5s ease;
 margin:40px auto;
 max-width:650px;
-line-height:1.8;
+line-height:1.9;
 font-size:17px;
 }
+
 .show{
 opacity:1;
 transform:translateY(0);
 }
 
-/* divider */
 .divider{
-margin:30px auto;
+margin:25px auto;
 width:40px;
 height:1px;
 background:#444;
 }
 
-/* chat */
+img{
+margin:15px auto;
+opacity:0.9;
+}
+
 .chat{
 background:#1a1a2e;
-padding:10px 14px;
+padding:10px;
 margin:8px auto;
 border-radius:12px;
 max-width:400px;
@@ -86,7 +84,6 @@ text-align:left;
 font-size:14px;
 }
 
-/* input */
 input{
 padding:10px;
 border-radius:10px;
@@ -95,7 +92,6 @@ background:#1a1a2e;
 color:white;
 }
 
-/* button */
 button{
 margin-top:15px;
 padding:10px 18px;
@@ -106,192 +102,250 @@ color:white;
 cursor:pointer;
 }
 
-/* hidden msg */
 .hidden{
 display:none;
 margin-top:20px;
-font-size:17px;
+}
+
+/* floating hearts */
+@keyframes floatUp{
+from{transform:translateY(0);}
+to{transform:translateY(-100vh); opacity:0;}
+}
+
+/* sparkle */
+@keyframes fadeOut{
+to{opacity:0; transform:translateY(-20px);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- intro -->
-<div id="intro" onclick="start()">
-begin
-</div>
+<div id="intro" onclick="start()">begin</div>
 
-<!-- lock -->
 <div id="lock">
 <h3>enter our date</h3>
 <input type="password" id="pass" placeholder="01042020">
 <button onclick="unlock()">enter</button>
 </div>
 
-<!-- music -->
 <audio id="music" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3">
 </audio>
 
-<!-- main -->
 <div id="main">
 
 <h2>our story</h2>
 
 <div class="section">
 It all started on January 20, 2020.  
-A normal day, a normal class… but something about that moment stayed with me.  
-That was the first time I saw you, and somehow, everything began there.
+Just another day, another biochemistry class… nothing extraordinary.  
+
+But somewhere in that ordinary moment, I saw you.  
+And even though nothing dramatic happened, something quietly shifted inside me.  
+A moment the world didn’t notice… but one that would later become everything.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
-We started talking, slowly and consistently.  
-Without even realizing it, you became a part of my everyday life…  
-not just someone I spoke to, but someone I felt connected to.
+We started talking… slowly at first, casually, like any normal conversation.  
+But days turned into a routine, and that routine turned into something deeper.  
+
+Without even realizing it, you became a part of my everyday life.  
+Not just someone I talked to… but someone I felt.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
 Then came March 31.  
-A night that felt like everything was falling apart.  
-We fought, we broke, and it felt like we were losing each other.  
+A storm we never saw coming.  
 
-But the very next day, April 1…  
-we chose each other again.  
-Not out of convenience, but because we truly meant to stay.
+We fought like it was the end… like everything we built was slipping away.  
+It was heavy, painful, and real.  
+
+But maybe that storm had a purpose.  
+Because the very next day… April 1…  
+
+We chose each other again.  
+Not out of habit… but with clarity.  
+We decided to stay. To fight. To face everything… together.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
 And today, after 6 years…  
-after everything we’ve been through…  
-we are still here, standing stronger than ever.
+After every high, every low, every storm we survived…  
+
+We are still here.  
+Stronger. Closer. Unshaken.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
 You showed up for me when it mattered the most.  
-Coming to my hospital visits, standing beside me quietly…  
-but with a strength that I could always feel.
+Coming for my hospital visits… standing beside me quietly…  
+
+You didn’t say much.  
+But your presence said everything.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
-When I was travelling to India,  
-you tracked my entire journey…  
-as if your heart was travelling with me.
+When I was flying to India…  
+You tracked my entire 10-hour journey.  
+
+Every moment, every update…  
+as if your heart was travelling with me the whole time.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
-Our bike rides were simple,  
-but they meant everything.  
-In those moments, it was just us…  
-and that felt like peace.
+Our bike rides…  
+They were simple, nothing big…  
+
+But in those quiet moments, it was just us.  
+And somehow… that felt like peace.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
-Some surprises stayed with me forever…  
-like the day I gave you the AirPods  
-and the look on your face said everything.
+Surprising you was never easy for me.  
+But there were moments I managed to get it right.  
+
+Like the AirPods…  
+You had no idea.  
+
+And that look on your face…  
+that happiness…  
+I still remember it so clearly.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
 That one anniversary…  
-we couldn’t even meet.  
+We couldn’t even meet.  
+
+You had your duty… I had mine…  
+Opposite timings… opposite schedules…  
+
 But still, I wanted you to feel loved.  
-And those small efforts… still make me emotional.
+Those small efforts…  
+they still make me emotional today.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
-Your birthday… that resort surprise…  
-your happiness in that moment  
+Your birthday…  
+That resort surprise…  
+
+Planning everything, calling everyone…  
+And when you saw it…  
+
+That moment… your happiness…  
 became one of my favorite memories.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
 And the day I came to your house…  
 and stood right in front of you…  
-I don’t think I’ll ever forget that reaction.
+
+The way you were completely shocked…  
+I don’t think I will ever forget that moment.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
 You don’t really surprise me often…  
-because you understand me so well.  
+Because you understand me so well.  
+
+You know what I need before I even say it.  
+
 But that one time…  
-that meant everything to me.
+That April 1… that iPad…  
+
+That meant everything to me.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
-We travelled distances just to be together.  
-And somehow… that always felt worth it.
+You travelled 24 hours…  
+Just to spend 6 hours with me.  
+
+And somehow…  
+that says everything about us.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
 We built a life together in Davao.  
-That room… wasn’t just a place.  
-It became home.
+That room…  
+
+It wasn’t just a place.  
+It became home.  
+For both of us.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
 We lived everything together…  
-the good, the bad, the happy, the painful.  
-Like a complete life of our own.
+The good, the bad, the happy, the painful…  
+
+Like a small, complete life of our own.
 </div>
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" width="90">
 
 <div class="divider"></div>
 
 <div class="section">
 There may be a thousand reasons I get angry at you…  
-but there is one reason I love you.  
-And that one reason is enough for me to stay.
+But there is one reason I love you.  
+
+And that one reason…  
+is enough for me to stay. Always.
 </div>
 
-<div class="divider"></div>
-
 <div class="section">
-I’m not asking for anything.  
-Just stay beside me… always.
-</div>
-
-<!-- chat -->
-<div class="section">
-<div class="chat">Did you eat?</div>
-<div class="chat">Only if you did.</div>
-<div class="chat">Take care.</div>
-<div class="chat">Stay with me.</div>
+I’m not asking for anything…  
+Just stay beside me.  
+That’s all I want.
 </div>
 
 <button onclick="showMsg()">final</button>
 
 <div id="msg" class="hidden">
-You are my home.  
-My peace.  
-My forever.  
+You are my home  
+My peace  
+My forever  
 — A
 </div>
 
@@ -318,6 +372,32 @@ if(sec.getBoundingClientRect().top<window.innerHeight-50){
 sec.classList.add('show');
 }
 });
+});
+
+/* hearts */
+setInterval(()=>{
+let h=document.createElement("div");
+h.innerHTML="♡";
+h.style.position="fixed";
+h.style.left=Math.random()*100+"vw";
+h.style.bottom="0";
+h.style.opacity="0.3";
+h.style.fontSize="14px";
+h.style.animation="floatUp 5s linear";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),5000);
+},1200);
+
+/* click sparkle */
+document.addEventListener("click",(e)=>{
+let s=document.createElement("div");
+s.innerHTML="✦";
+s.style.position="absolute";
+s.style.left=e.pageX+"px";
+s.style.top=e.pageY+"px";
+s.style.animation="fadeOut 1s";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),1000);
 });
 
 function showMsg(){
