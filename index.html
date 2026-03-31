@@ -14,6 +14,13 @@ color:#e6d9b8;
 font-family:'Playfair Display', serif;
 text-align:center;
 overflow:hidden;
+transition:1s;
+}
+
+/* LIGHT MODE */
+.light{
+background: linear-gradient(135deg,#1a2a3a,#2f4f6f);
+color:#fff3d6;
 }
 
 .screen{
@@ -57,18 +64,15 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-.balloon{
-position:absolute;
-bottom:-100px;
-width:40px;
-height:50px;
-border-radius:50%;
-animation:float 5s linear forwards;
+/* CONFETTI */
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
 }
-@keyframes float{
-to{transform:translateY(-120vh);}
 }
 
+/* FINAL */
 .finalText{
 font-family:'Dancing Script', cursive;
 font-size:26px;
@@ -81,6 +85,7 @@ position:absolute;
 color:#ff4d6d;
 animation:rise 4s linear infinite;
 }
+
 @keyframes rise{
 to{transform:translateY(-100vh);opacity:0;}
 }
@@ -89,10 +94,12 @@ to{transform:translateY(-100vh);opacity:0;}
 
 <body>
 
+<!-- INTRO -->
 <div id="intro" class="screen active">
 <h1 onclick="show('lock')">Tap to Begin ✨</h1>
 </div>
 
+<!-- LOCK -->
 <div id="lock" class="screen">
 <h2>Enter our date 💖</h2>
 <input id="pass" placeholder="01042020">
@@ -113,19 +120,20 @@ to{transform:translateY(-100vh);opacity:0;}
 <div id="s3" class="screen">
 <h2>Are you ready?</h2>
 <button onclick="next(4)">Yes 💕</button>
+<button onclick="alert('No option 😄')">No 😒</button>
 </div>
 
 <div id="s4" class="screen">
 <h2>Turn the lights on 💡</h2>
-<button onclick="next(5)">Lights On</button>
+<button onclick="turnLights()">Lights On</button>
 </div>
 
 <div id="s5" class="screen">
 <h1>✨ Happy Anniversary ✨</h1>
-<button onclick="balloons()">Celebrate 🎈</button>
+<button onclick="confetti()">Celebrate 🎊</button>
 </div>
 
-<!-- STORY FULL -->
+<!-- STORY (FULL) -->
 <div id="s6" class="screen"><div class="text">
 It all started on January 20, 2020…  
 A normal day, a normal biochemistry class…
@@ -308,7 +316,7 @@ not even once.
 <!-- FINAL -->
 <div id="s22" class="screen">
 <div id="finalText" class="finalText"></div>
-<button id="finalBtn" onclick="finalStart()">Open My Heart 💌</button>
+<button id="finalBtn" onclick="startFinal()">Open My Heart 💌</button>
 
 <div id="proposal" style="display:none;">
 <h2>Will you stay forever? 💍</h2>
@@ -332,18 +340,30 @@ show('s1');
 }else{alert("Wrong date 😄");}
 }
 
-function balloons(){
-for(let i=0;i<20;i++){
-let b=document.createElement("div");
-b.className="balloon";
-b.style.left=Math.random()*100+"%";
-b.style.background=["gold","white"][Math.floor(Math.random()*2)];
-document.body.appendChild(b);
+/* LIGHT */
+function turnLights(){
+document.body.classList.add("light");
+next(5);
+}
+
+/* CONFETTI */
+function confetti(){
+for(let i=0;i<40;i++){
+let c=document.createElement("div");
+c.innerHTML="🎊";
+c.style.position="absolute";
+c.style.left=Math.random()*100+"%";
+c.style.top="-10px";
+c.style.fontSize=(20+Math.random()*20)+"px";
+c.style.animation="fall 3s linear forwards";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),3000);
 }
 setTimeout(()=>show('s6'),2000);
 }
 
-function finalStart(){
+/* FINAL */
+function startFinal(){
 document.getElementById("finalBtn").style.display="none";
 
 let text=`I would still choose you…
@@ -367,6 +387,14 @@ document.getElementById("proposal").style.display="block";
 }
 }
 type();
+
+for(let j=0;j<20;j++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"%";
+document.body.appendChild(h);
+}
 }
 
 function answer(){
