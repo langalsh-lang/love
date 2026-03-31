@@ -95,15 +95,39 @@ animation:fade 2s forwards;
 @keyframes fade{
 to{opacity:1;}
 }
+
+/* GIF */
+.gif{
+width:200px;
+margin-bottom:20px;
+border-radius:20px;
+}
+
+/* FINAL */
+.finalText{
+max-width:600px;
+font-size:20px;
+line-height:2;
+white-space:pre-line;
+opacity:0;
+margin-bottom:20px;
+}
+
+.heart{
+position:absolute;
+color:#ff4d6d;
+font-size:20px;
+animation:rise 4s linear infinite;
+}
+
+@keyframes rise{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-100vh);opacity:0;}
+}
 </style>
 </head>
 
 <body>
-
-<!-- MUSIC -->
-<audio id="music" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3">
-</audio>
 
 <!-- INTRO -->
 <div id="intro" class="screen active" onclick="nextScreen('lock')">
@@ -119,16 +143,19 @@ to{opacity:1;}
 
 <!-- START -->
 <div id="s1" class="screen">
+<img class="gif" src="https://media.tenor.com/0AVbKGY_MxMAAAAC/bubu-dudu-love.gif">
 <h1>Yayyy 💖 It's our special day</h1>
 <button onclick="nextScreen('s2')">Next</button>
 </div>
 
 <div id="s2" class="screen">
+<img class="gif" src="https://media.tenor.com/VgG7x9wM6VYAAAAC/bubu-dudu-happy.gif">
 <h2>Chalo let's make this special ✨</h2>
 <button onclick="nextScreen('s3')">Next</button>
 </div>
 
 <div id="s3" class="screen">
+<img class="gif" src="https://media.tenor.com/2roX3uxFazQAAAAC/bubu-dudu-waiting.gif">
 <h2>Are you ready?</h2>
 <button onclick="nextScreen('s4')">Yes 💕</button>
 <button onclick="alert('No option 😄')">No 😒</button>
@@ -136,64 +163,62 @@ to{opacity:1;}
 
 <!-- LIGHT -->
 <div id="s4" class="screen">
+<img class="gif" src="https://media.tenor.com/iqfh5gQJqZQAAAAC/bubu-dudu-light.gif">
 <h2>Turn the lights on 💡</h2>
 <button onclick="lightsOn()">Lights On</button>
 </div>
 
-<!-- MUSIC -->
-<div id="s5" class="screen">
-<h2>Play our music 🎶</h2>
-<button onclick="playMusic()">Play Music</button>
-</div>
-
 <!-- DECOR -->
-<div id="s6" class="screen">
+<div id="s5" class="screen">
+<img class="gif" src="https://media.tenor.com/6c8WlX4e9n8AAAAC/bubu-dudu-celebration.gif">
 <div class="banner">✨ Happy Anniversary ✨</div>
-<button onclick="nextScreen('s7')">Continue</button>
+<button onclick="nextScreen('s6')">Continue</button>
 </div>
 
 <!-- BALLOONS -->
-<div id="s7" class="screen">
+<div id="s6" class="screen">
+<img class="gif" src="https://media.tenor.com/7n6kK6G7z7kAAAAC/bubu-dudu-balloon.gif">
 <h2>Let’s celebrate 🎈</h2>
 <button onclick="startBalloons()">Fly Balloons</button>
 </div>
 
 <!-- STORY -->
-<div id="s8" class="screen">
+<div id="s7" class="screen">
 <div class="text">
 It all started on January 20, 2020…  
 A normal day… but something changed.
+</div>
+<button onclick="nextScreen('s8')">Next</button>
+</div>
+
+<div id="s8" class="screen">
+<div class="text">
+You became part of my everyday life.
 </div>
 <button onclick="nextScreen('s9')">Next</button>
 </div>
 
 <div id="s9" class="screen">
 <div class="text">
-You became part of my everyday life.
+We fought… but we never gave up.
 </div>
 <button onclick="nextScreen('s10')">Next</button>
 </div>
 
 <div id="s10" class="screen">
 <div class="text">
-We fought… but we never gave up.
+We chose each other again… and again.
 </div>
 <button onclick="nextScreen('s11')">Next</button>
 </div>
 
+<!-- FINAL -->
 <div id="s11" class="screen">
-<div class="text">
-We chose each other again… and again.
-</div>
-<button onclick="nextScreen('s12')">Next</button>
-</div>
 
-<div id="s12" class="screen">
-<div class="text">
-You are my home… my peace… my forever.  
+<div id="finalText" class="finalText"></div>
 
-— A 💖
-</div>
+<button onclick="startFinal()">Open My Heart 💌</button>
+
 </div>
 
 <script>
@@ -216,15 +241,6 @@ document.body.classList.add("light");
 nextScreen('s5');
 }
 
-function playMusic(){
-let m=document.getElementById("music");
-m.play().then(()=>{
-nextScreen('s6');
-}).catch(()=>{
-alert("Tap again to allow music 🎶");
-});
-}
-
 function startBalloons(){
 for(let i=0;i<20;i++){
 let b=document.createElement("div");
@@ -233,7 +249,59 @@ b.style.left=Math.random()*100+"%";
 b.style.background=["gold","white","silver"][Math.floor(Math.random()*3)];
 document.body.appendChild(b);
 }
-nextScreen('s8');
+nextScreen('s7');
+}
+
+/* FINAL ANIMATION */
+function startFinal(){
+
+let text = `I don’t know how we made it this far...
+
+Through every fight,
+every silence,
+every moment that almost broke us...
+
+But we did.
+
+And if I had to choose again —
+in every lifetime,
+in every version of this world...
+
+I would still choose you.
+
+Not because it's easy…
+but because it's YOU.
+
+You are my home.
+My peace.
+My forever.
+
+— A 💖`;
+
+let i=0;
+let speed=40;
+let box=document.getElementById("finalText");
+box.style.opacity=1;
+box.innerHTML="";
+
+function type(){
+if(i<text.length){
+box.innerHTML += text.charAt(i);
+i++;
+setTimeout(type,speed);
+}
+}
+type();
+
+/* hearts */
+for(let j=0;j<30;j++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"%";
+h.style.fontSize=(15+Math.random()*20)+"px";
+document.body.appendChild(h);
+}
 }
 </script>
 
