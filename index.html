@@ -133,7 +133,7 @@ to{transform:translateY(-100vh);opacity:0;}
 <button onclick="confetti()">Celebrate 🎊</button>
 </div>
 
-<!-- STORY (FULL) -->
+<!-- STORY -->
 <div id="s6" class="screen"><div class="text">
 It all started on January 20, 2020…  
 A normal day, a normal biochemistry class…
@@ -313,8 +313,39 @@ I never stopped choosing you…
 not even once.
 </div><button onclick="next(22)">Next</button></div>
 
+<!-- DAVAO -->
+<div id="s22" class="screen"><div class="text">
+All these six years in Davao…
+
+They gave me some of the best moments of my life —
+because I had you.
+
+Our little world there…
+our home, our people, our memories…
+
+The trips, the bike rides,
+those late-night parties and disco nights,
+birthdays that felt so full of life…
+
+Cooking together,
+canteen fun, college masti,
+those random McD nights,
+our silly bamboo fights over biryani 😄
+
+Even the smallest things —
+our tiny aquarium fishes,
+the TV,
+our room…
+
+That place wasn’t just a place.
+
+It was our safe space.
+Our life.
+Our love.
+</div><button onclick="next(23)">Next</button></div>
+
 <!-- FINAL -->
-<div id="s22" class="screen">
+<div id="s23" class="screen">
 <div id="finalText" class="finalText"></div>
 <button id="finalBtn" onclick="startFinal()">Open My Heart 💌</button>
 
@@ -340,13 +371,11 @@ show('s1');
 }else{alert("Wrong date 😄");}
 }
 
-/* LIGHT */
 function turnLights(){
 document.body.classList.add("light");
 next(5);
 }
 
-/* CONFETTI */
 function confetti(){
 for(let i=0;i<40;i++){
 let c=document.createElement("div");
@@ -362,7 +391,6 @@ setTimeout(()=>c.remove(),3000);
 setTimeout(()=>show('s6'),2000);
 }
 
-/* FINAL */
 function startFinal(){
 document.getElementById("finalBtn").style.display="none";
 
