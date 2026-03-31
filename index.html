@@ -16,6 +16,7 @@ text-align:center;
 overflow:hidden;
 }
 
+/* screens */
 .screen{
 display:none;
 height:100vh;
@@ -40,6 +41,13 @@ color:black;
 cursor:pointer;
 }
 
+input{
+padding:10px;
+border-radius:20px;
+border:none;
+}
+
+/* text */
 .text{
 max-width:650px;
 line-height:1.9;
@@ -92,8 +100,8 @@ to{transform:translateY(-100vh);opacity:0;}
 <body>
 
 <!-- intro -->
-<div id="intro" class="screen active" onclick="go('lock')">
-<h1>Tap to Begin ✨</h1>
+<div id="intro" class="screen active">
+<h1 onclick="showScreen('lock')">Tap to Begin ✨</h1>
 </div>
 
 <!-- lock -->
@@ -128,13 +136,13 @@ to{transform:translateY(-100vh);opacity:0;}
 
 <div id="s5" class="screen">
 <h1>✨ Happy Anniversary ✨</h1>
-<button onclick="balloons()">Celebrate 🎈</button>
+<button onclick="startBalloons()">Celebrate 🎈</button>
 </div>
 
 <!-- STORY -->
 <div id="s6" class="screen"><div class="text">
 It all started on January 20, 2020…  
-A normal day… a normal class…
+A normal day… a normal class…  
 
 But somehow… something changed that day.
 </div><button onclick="next(7)">Next</button></div>
@@ -216,32 +224,40 @@ is a reason I stayed.
 <div id="s21" class="screen">
 
 <div id="finalText" class="finalText"></div>
-<button id="finalBtn" onclick="finalStart()">Open My Heart 💌</button>
+<button id="finalBtn" onclick="startFinal()">Open My Heart 💌</button>
 
 <div id="proposal" style="display:none;">
 <h2>Will you stay forever? 💍</h2>
-<button onclick="yes()">Yes 💖</button>
-<button onclick="yes()">Always 💫</button>
-<div id="resp"></div>
+<button onclick="answer()">Yes 💖</button>
+<button onclick="answer()">Always 💫</button>
+<div id="response"></div>
 </div>
 
 </div>
 
 <script>
-function go(id){document.getElementById('intro').classList.remove('active');document.getElementById(id).classList.add('active');}
 
-function unlock(){
-if(document.getElementById("pass").value==="01042020"){
-go('s1');
-}else{alert("Wrong date");}
+/* navigation */
+function showScreen(id){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
 }
 
 function next(n){
-document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-document.getElementById('s'+n).classList.add('active');
+showScreen('s'+n);
 }
 
-function balloons(){
+/* unlock */
+function unlock(){
+if(document.getElementById("pass").value==="01042020"){
+showScreen('s1');
+}else{
+alert("Wrong date 😄");
+}
+}
+
+/* balloons (once) */
+function startBalloons(){
 for(let i=0;i<20;i++){
 let b=document.createElement("div");
 b.className="balloon";
@@ -249,10 +265,11 @@ b.style.left=Math.random()*100+"%";
 b.style.background=["gold","white"][Math.floor(Math.random()*2)];
 document.body.appendChild(b);
 }
-setTimeout(()=>next(6),2000);
+setTimeout(()=>showScreen('s6'),2000);
 }
 
-function finalStart(){
+/* final */
+function startFinal(){
 document.getElementById("finalBtn").style.display="none";
 
 let text=`I would still choose you…
@@ -278,6 +295,7 @@ document.getElementById("proposal").style.display="block";
 }
 type();
 
+/* hearts */
 for(let j=0;j<20;j++){
 let h=document.createElement("div");
 h.className="heart";
@@ -287,9 +305,10 @@ document.body.appendChild(h);
 }
 }
 
-function yes(){
-document.getElementById("resp").innerHTML="You already are… 💖";
+function answer(){
+document.getElementById("response").innerHTML="You already are… 💖";
 }
+
 </script>
 
 </body>
