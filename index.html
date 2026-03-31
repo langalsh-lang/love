@@ -14,12 +14,6 @@ color:#e6d9b8;
 font-family:'Playfair Display', serif;
 text-align:center;
 overflow:hidden;
-transition:1s;
-}
-
-.light{
-background: linear-gradient(135deg,#1a2a3a,#243b55);
-color:#f5e6c8;
 }
 
 .screen{
@@ -28,95 +22,88 @@ height:100vh;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-padding:20px;
+padding:25px;
 }
-.active{ display:flex; }
+.active{display:flex;}
 
 h1,h2{
 font-family:'Dancing Script', cursive;
 }
 
 button{
-margin:10px;
+margin-top:20px;
 padding:10px 20px;
 border:none;
 border-radius:25px;
-cursor:pointer;
 background:#d4af37;
 color:black;
-}
-
-input{
-padding:10px;
-border-radius:20px;
-border:none;
+cursor:pointer;
 }
 
 .text{
-max-width:600px;
+max-width:650px;
 line-height:1.9;
-opacity:0;
-animation:fade 2s forwards;
+animation:fade 1.5s;
 }
 
 @keyframes fade{
+from{opacity:0;}
 to{opacity:1;}
 }
 
+/* balloons */
 .balloon{
 position:absolute;
 bottom:-100px;
 width:40px;
 height:50px;
 border-radius:50%;
-animation:float 6s linear forwards;
+animation:float 5s linear forwards;
 }
 @keyframes float{
-0%{transform:translateY(0);}
-100%{transform:translateY(-120vh);}
+to{transform:translateY(-120vh);}
 }
 
+/* gif */
 .gif{
-width:200px;
-margin-bottom:20px;
-border-radius:20px;
+width:180px;
+margin-bottom:15px;
 }
 
+/* final */
 .finalText{
-max-width:600px;
-font-size:26px;
-line-height:2;
 font-family:'Dancing Script', cursive;
-opacity:0;
+font-size:26px;
 white-space:pre-line;
+opacity:0;
 }
 
 .heart{
 position:absolute;
 color:#ff4d6d;
-font-size:20px;
 animation:rise 4s linear infinite;
 }
-
 @keyframes rise{
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-100vh);opacity:0;}
+to{transform:translateY(-100vh);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<div id="intro" class="screen active" onclick="goLock()">
+<!-- intro -->
+<div id="intro" class="screen active" onclick="go('lock')">
 <h1>Tap to Begin ✨</h1>
 </div>
 
+<!-- lock -->
 <div id="lock" class="screen">
 <h2>Enter our date 💖</h2>
 <input id="pass" placeholder="01042020">
-<button onclick="unlock()">Unlock</button>
+<button onclick="unlock()">Enter</button>
 </div>
 
+<!-- START -->
 <div id="s1" class="screen">
 <img class="gif" src="https://media.tenor.com/0AVbKGY_MxMAAAAC/bubu-dudu-love.gif">
 <h1>Yayyy 💖 It's our special day</h1>
@@ -124,114 +111,150 @@ animation:rise 4s linear infinite;
 </div>
 
 <div id="s2" class="screen">
-<img class="gif" src="https://media.tenor.com/VgG7x9wM6VYAAAAC/bubu-dudu-happy.gif">
 <h2>Chalo let's make this special ✨</h2>
 <button onclick="next(3)">Next</button>
 </div>
 
 <div id="s3" class="screen">
-<img class="gif" src="https://media.tenor.com/2roX3uxFazQAAAAC/bubu-dudu-waiting.gif">
 <h2>Are you ready?</h2>
 <button onclick="next(4)">Yes 💕</button>
 <button onclick="alert('No option 😄')">No 😒</button>
 </div>
 
 <div id="s4" class="screen">
-<img class="gif" src="https://media.tenor.com/iqfh5gQJqZQAAAAC/bubu-dudu-light.gif">
 <h2>Turn the lights on 💡</h2>
-<button onclick="lightsOn()">Lights On</button>
+<button onclick="next(5)">Lights On</button>
 </div>
 
 <div id="s5" class="screen">
 <h1>✨ Happy Anniversary ✨</h1>
-<button onclick="startBalloons()">Celebrate 🎈</button>
+<button onclick="balloons()">Celebrate 🎈</button>
 </div>
 
-<!-- ORIGINAL STORY -->
-<div id="s6" class="screen"><div class="text">It all started on January 20, 2020... (same as before)</div><button onclick="next(7)">continue</button></div>
+<!-- STORY -->
+<div id="s6" class="screen"><div class="text">
+It all started on January 20, 2020…  
+A normal day… a normal class…
 
-<div id="s7" class="screen"><div class="text">We started talking slowly… just simple conversations at first...</div><button onclick="next(8)">continue</button></div>
+But somehow… something changed that day.
+</div><button onclick="next(7)">Next</button></div>
 
-<div id="s8" class="screen"><div class="text">Then came March 31...</div><button onclick="next(9)">continue</button></div>
+<div id="s7" class="screen"><div class="text">
+We started talking slowly…  
+and you became my favorite part of the day.
+</div><button onclick="next(8)">Next</button></div>
 
-<div id="s9" class="screen"><div class="text">But the very next day… April 1…</div><button onclick="next(10)">continue</button></div>
+<div id="s8" class="screen"><div class="text">
+March 31…  
+felt like everything was breaking.
+</div><button onclick="next(9)">Next</button></div>
 
-<div id="s10" class="screen"><div class="text">And today… after six years…</div><button onclick="next(11)">continue</button></div>
+<div id="s9" class="screen"><div class="text">
+April 1…  
+we chose each other again.
+</div><button onclick="next(10)">Next</button></div>
 
-<div id="s11" class="screen"><div class="text">You showed up for me when it mattered the most...</div><button onclick="next(12)">continue</button></div>
+<div id="s10" class="screen"><div class="text">
+After everything…  
+we are still here.
+</div><button onclick="next(11)">Next</button></div>
 
-<div id="s12" class="screen"><div class="text">When I was flying to India...</div><button onclick="next(13)">continue</button></div>
+<div id="s11" class="screen"><div class="text">
+You showed up when it mattered most…  
+that meant everything.
+</div><button onclick="next(12)">Next</button></div>
 
-<div id="s13" class="screen"><div class="text">You travelled 24 hours...</div><button onclick="next(14)">continue</button></div>
+<div id="s12" class="screen"><div class="text">
+You followed my journey…  
+as if your heart was with me.
+</div><button onclick="next(13)">Next</button></div>
 
-<!-- NEW MEMORY SLIDES -->
-<div id="s14" class="screen"><div class="text">The moment I surprised you at the door… your reaction was priceless.</div><button onclick="next(15)">continue</button></div>
+<div id="s13" class="screen"><div class="text">
+24 hours travel…  
+just for 6 hours with me.
+</div><button onclick="next(14)">Next</button></div>
 
-<div id="s15" class="screen"><div class="text">Last year anniversary… we didn’t meet but I surprised you with Apple Pencil and decor… pure love.</div><button onclick="next(16)">continue</button></div>
+<!-- NEW -->
+<div id="s14" class="screen"><div class="text">
+That door surprise…  
+your reaction was priceless.
+</div><button onclick="next(15)">Next</button></div>
 
-<div id="s16" class="screen"><div class="text">Your birthday resort party… best time with best people.</div><button onclick="next(17)">continue</button></div>
+<div id="s15" class="screen"><div class="text">
+Even when we didn’t meet…  
+I made sure to surprise you.  
+Every effort… was love.
+</div><button onclick="next(16)">Next</button></div>
 
-<div id="s17" class="screen"><div class="text">I always manage to surprise you hehe 😄</div><button onclick="next(18)">continue</button></div>
+<div id="s16" class="screen"><div class="text">
+Your birthday…  
+was one of our best days.
+</div><button onclick="next(17)">Next</button></div>
 
-<div id="s18" class="screen"><div class="text">You never needed surprises… you gave me everything I needed.</div><button onclick="next(19)">continue</button></div>
+<div id="s17" class="screen"><div class="text">
+I always surprise you 😄  
+that’s my love.
+</div><button onclick="next(18)">Next</button></div>
 
-<div id="s19" class="screen"><div class="text">April 1 2024… your surprise and iPad… I fell for you again.</div><button onclick="next(20)">continue</button></div>
+<div id="s18" class="screen"><div class="text">
+You gave me everything I needed…  
+that’s why I fell for you.
+</div><button onclick="next(19)">Next</button></div>
 
-<!-- ORIGINAL END PART -->
-<div id="s20" class="screen"><div class="text">Before going further… pause for a moment…</div><button onclick="next(21)">continue</button></div>
+<div id="s19" class="screen"><div class="text">
+Your April 1 surprise…  
+made me fall in love again.
+</div><button onclick="next(20)">Next</button></div>
 
-<div id="s21" class="screen">
-<div class="text">There are so many moments… every single one is a reason I stayed.</div>
-<button onclick="showHidden()">reveal something</button>
-<div id="hidden" style="display:none;">I never stopped choosing you… not even once.</div>
-<br>
-<button onclick="next(22)">continue</button>
-</div>
+<div id="s20" class="screen"><div class="text">
+Every moment…  
+every memory…  
+is a reason I stayed.
+</div><button onclick="next(21)">Next</button></div>
 
 <!-- FINAL -->
-<div id="s22" class="screen">
+<div id="s21" class="screen">
 
 <div id="finalText" class="finalText"></div>
-
-<button id="finalBtn" onclick="startFinal()">Open My Heart 💌</button>
+<button id="finalBtn" onclick="finalStart()">Open My Heart 💌</button>
 
 <div id="proposal" style="display:none;">
-<h2 style="font-family:'Dancing Script',cursive;">Will you stay forever? 💍</h2>
-<button onclick="answerYes()">Yes 💖</button>
-<button onclick="answerYes()">Always 💫</button>
-<div id="response"></div>
+<h2>Will you stay forever? 💍</h2>
+<button onclick="yes()">Yes 💖</button>
+<button onclick="yes()">Always 💫</button>
+<div id="resp"></div>
 </div>
 
 </div>
 
 <script>
-function goLock(){nextScreen('lock');}
-function unlock(){
-if(document.getElementById("pass").value==="01042020"){nextScreen('s1');}
-else{alert("Wrong date 😄");}
-}
-function next(n){nextScreen('s'+n);}
-function nextScreen(id){
-document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-}
-function lightsOn(){document.body.classList.add("light");next(5);}
+function go(id){document.getElementById('intro').classList.remove('active');document.getElementById(id).classList.add('active');}
 
-function startBalloons(){
+function unlock(){
+if(document.getElementById("pass").value==="01042020"){
+go('s1');
+}else{alert("Wrong date");}
+}
+
+function next(n){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById('s'+n).classList.add('active');
+}
+
+function balloons(){
 for(let i=0;i<20;i++){
 let b=document.createElement("div");
 b.className="balloon";
 b.style.left=Math.random()*100+"%";
-b.style.background=["gold","white","silver"][Math.floor(Math.random()*3)];
+b.style.background=["gold","white"][Math.floor(Math.random()*2)];
 document.body.appendChild(b);
 }
 setTimeout(()=>next(6),2000);
 }
 
-function showHidden(){document.getElementById("hidden").style.display="block";}
-
-function startFinal(){
+function finalStart(){
 document.getElementById("finalBtn").style.display="none";
+
 let text=`I would still choose you…
 
 You are my home.
@@ -239,12 +262,23 @@ My peace.
 My forever.
 
 — A 💖`;
-let i=0; let box=document.getElementById("finalText"); box.style.opacity=1;
-function type(){ if(i<text.length){ box.innerHTML+=text.charAt(i); i++; setTimeout(type,40);}
-else{document.getElementById("proposal").style.display="block";}}
+
+let i=0;
+let box=document.getElementById("finalText");
+box.style.opacity=1;
+
+function type(){
+if(i<text.length){
+box.innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,40);
+}else{
+document.getElementById("proposal").style.display="block";
+}
+}
 type();
 
-for(let j=0;j<25;j++){
+for(let j=0;j<20;j++){
 let h=document.createElement("div");
 h.className="heart";
 h.innerHTML="❤";
@@ -253,8 +287,8 @@ document.body.appendChild(h);
 }
 }
 
-function answerYes(){
-document.getElementById("response").innerHTML="You already are… 💖";
+function yes(){
+document.getElementById("resp").innerHTML="You already are… 💖";
 }
 </script>
 
