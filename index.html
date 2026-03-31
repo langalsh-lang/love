@@ -16,7 +16,6 @@ text-align:center;
 overflow:hidden;
 }
 
-/* screens */
 .screen{
 display:none;
 height:100vh;
@@ -47,7 +46,6 @@ border-radius:20px;
 border:none;
 }
 
-/* text */
 .text{
 max-width:650px;
 line-height:1.9;
@@ -59,7 +57,6 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-/* balloons */
 .balloon{
 position:absolute;
 bottom:-100px;
@@ -72,13 +69,6 @@ animation:float 5s linear forwards;
 to{transform:translateY(-120vh);}
 }
 
-/* gif */
-.gif{
-width:180px;
-margin-bottom:15px;
-}
-
-/* final */
 .finalText{
 font-family:'Dancing Script', cursive;
 font-size:26px;
@@ -99,12 +89,10 @@ to{transform:translateY(-100vh);opacity:0;}
 
 <body>
 
-<!-- intro -->
 <div id="intro" class="screen active">
-<h1 onclick="showScreen('lock')">Tap to Begin ✨</h1>
+<h1 onclick="show('lock')">Tap to Begin ✨</h1>
 </div>
 
-<!-- lock -->
 <div id="lock" class="screen">
 <h2>Enter our date 💖</h2>
 <input id="pass" placeholder="01042020">
@@ -113,7 +101,6 @@ to{transform:translateY(-100vh);opacity:0;}
 
 <!-- START -->
 <div id="s1" class="screen">
-<img class="gif" src="https://media.tenor.com/0AVbKGY_MxMAAAAC/bubu-dudu-love.gif">
 <h1>Yayyy 💖 It's our special day</h1>
 <button onclick="next(2)">Next</button>
 </div>
@@ -126,7 +113,6 @@ to{transform:translateY(-100vh);opacity:0;}
 <div id="s3" class="screen">
 <h2>Are you ready?</h2>
 <button onclick="next(4)">Yes 💕</button>
-<button onclick="alert('No option 😄')">No 😒</button>
 </div>
 
 <div id="s4" class="screen">
@@ -136,95 +122,193 @@ to{transform:translateY(-100vh);opacity:0;}
 
 <div id="s5" class="screen">
 <h1>✨ Happy Anniversary ✨</h1>
-<button onclick="startBalloons()">Celebrate 🎈</button>
+<button onclick="balloons()">Celebrate 🎈</button>
 </div>
 
-<!-- STORY -->
+<!-- STORY FULL -->
 <div id="s6" class="screen"><div class="text">
 It all started on January 20, 2020…  
-A normal day… a normal class…  
+A normal day, a normal biochemistry class…
 
-But somehow… something changed that day.
+Nothing felt special at that moment.  
+But somehow… that was the first time I saw you.
+
+And without even realizing…  
+something inside me quietly changed.
 </div><button onclick="next(7)">Next</button></div>
 
 <div id="s7" class="screen"><div class="text">
 We started talking slowly…  
-and you became my favorite part of the day.
+just random conversations at first.
+
+But little by little…  
+those small talks became my favorite part of the day.
+
+And before I knew it…  
+you became a part of my everyday life.
 </div><button onclick="next(8)">Next</button></div>
 
 <div id="s8" class="screen"><div class="text">
-March 31…  
-felt like everything was breaking.
+Then came March 31…
+
+A night that felt like everything was falling apart.  
+We fought like we were losing each other forever.
+
+It hurt… more than anything.
 </div><button onclick="next(9)">Next</button></div>
 
 <div id="s9" class="screen"><div class="text">
-April 1…  
-we chose each other again.
+But the very next day… April 1…
+
+We chose each other again.  
+Not out of habit…  
+but because we truly wanted to stay.
+
+And that meant everything.
 </div><button onclick="next(10)">Next</button></div>
 
 <div id="s10" class="screen"><div class="text">
-After everything…  
+And today… after all these years…
+
+After every fight, every storm…  
 we are still here.
+
+Still choosing each other…  
+again and again.
 </div><button onclick="next(11)">Next</button></div>
 
 <div id="s11" class="screen"><div class="text">
-You showed up when it mattered most…  
-that meant everything.
+You showed up for me  
+when it mattered the most…
+
+Hospital visits… silent support…
+
+You didn’t need to say anything.  
+Your presence alone meant everything to me.
 </div><button onclick="next(12)">Next</button></div>
 
 <div id="s12" class="screen"><div class="text">
-You followed my journey…  
-as if your heart was with me.
+When I was flying to India…  
+
+You followed my whole journey…  
+every update, every moment…
+
+As if your heart was travelling with me.
 </div><button onclick="next(13)">Next</button></div>
 
 <div id="s13" class="screen"><div class="text">
-24 hours travel…  
-just for 6 hours with me.
+You travelled 24 hours…  
+just to spend 6 hours with me.
+
+And somehow…  
+that says everything about us.
 </div><button onclick="next(14)">Next</button></div>
 
-<!-- NEW -->
 <div id="s14" class="screen"><div class="text">
-That door surprise…  
-your reaction was priceless.
+That moment… when I surprised you at the door…
+
+Your reaction…  
+it was priceless.
+
+I wish I could pause that moment  
+and live in it a little longer.
 </div><button onclick="next(15)">Next</button></div>
 
 <div id="s15" class="screen"><div class="text">
-Even when we didn’t meet…  
-I made sure to surprise you.  
-Every effort… was love.
+Last year… our anniversary wasn’t easy.
+
+You had duty from 7 am to 7 pm,  
+and mine was 7 pm to 7 am…
+
+We didn’t even get to see each other.
+
+But before you came home…  
+I made sure to leave a little surprise for you —
+
+An Apple Pencil…  
+and a small decoration filled with love.
+
+Every bit of that effort…  
+was just for you.
 </div><button onclick="next(16)">Next</button></div>
 
 <div id="s16" class="screen"><div class="text">
-Your birthday…  
-was one of our best days.
+And your birthday…
+
+That resort surprise…  
+was the best thing I could think of for you.
+
+We laughed, we celebrated…  
+surrounded by the best people.
+
+That day… felt perfect.
 </div><button onclick="next(17)">Next</button></div>
 
 <div id="s17" class="screen"><div class="text">
-I always surprise you 😄  
-that’s my love.
+Somehow…  
+I always manage to surprise you 😄
+
+Maybe that’s just my way  
+of loving you.
 </div><button onclick="next(18)">Next</button></div>
 
 <div id="s18" class="screen"><div class="text">
-You gave me everything I needed…  
-that’s why I fell for you.
+And you…
+
+You never needed big surprises.
+
+Because you always knew  
+what I needed…
+
+And gave me everything —  
+before I even asked.
+
+That’s the kind of love  
+I fell for.
 </div><button onclick="next(19)">Next</button></div>
 
 <div id="s19" class="screen"><div class="text">
-Your April 1 surprise…  
-made me fall in love again.
+But that day… April 1, 2024…
+
+You completely surprised me.
+
+The decoration…  
+the iPad…
+
+But more than that —  
+the thought behind it.
+
+That you understood me so deeply…
+
+I fell for you all over again.
 </div><button onclick="next(20)">Next</button></div>
 
 <div id="s20" class="screen"><div class="text">
-Every moment…  
-every memory…  
-is a reason I stayed.
+Before going further…
+
+Just pause for a moment.
+
+Think about us…  
+every memory… every feeling…
+
+Everything we’ve been through.
 </div><button onclick="next(21)">Next</button></div>
 
-<!-- FINAL -->
-<div id="s21" class="screen">
+<div id="s21" class="screen"><div class="text">
+There are so many moments…  
+big and small…
 
+But every single one of them…  
+is a reason I stayed.
+
+I never stopped choosing you…  
+not even once.
+</div><button onclick="next(22)">Next</button></div>
+
+<!-- FINAL -->
+<div id="s22" class="screen">
 <div id="finalText" class="finalText"></div>
-<button id="finalBtn" onclick="startFinal()">Open My Heart 💌</button>
+<button id="finalBtn" onclick="finalStart()">Open My Heart 💌</button>
 
 <div id="proposal" style="display:none;">
 <h2>Will you stay forever? 💍</h2>
@@ -232,32 +316,23 @@ is a reason I stayed.
 <button onclick="answer()">Always 💫</button>
 <div id="response"></div>
 </div>
-
 </div>
 
 <script>
-
-/* navigation */
-function showScreen(id){
+function show(id){
 document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 }
 
-function next(n){
-showScreen('s'+n);
-}
+function next(n){show('s'+n);}
 
-/* unlock */
 function unlock(){
 if(document.getElementById("pass").value==="01042020"){
-showScreen('s1');
-}else{
-alert("Wrong date 😄");
-}
+show('s1');
+}else{alert("Wrong date 😄");}
 }
 
-/* balloons (once) */
-function startBalloons(){
+function balloons(){
 for(let i=0;i<20;i++){
 let b=document.createElement("div");
 b.className="balloon";
@@ -265,11 +340,10 @@ b.style.left=Math.random()*100+"%";
 b.style.background=["gold","white"][Math.floor(Math.random()*2)];
 document.body.appendChild(b);
 }
-setTimeout(()=>showScreen('s6'),2000);
+setTimeout(()=>show('s6'),2000);
 }
 
-/* final */
-function startFinal(){
+function finalStart(){
 document.getElementById("finalBtn").style.display="none";
 
 let text=`I would still choose you…
@@ -280,8 +354,7 @@ My forever.
 
 — A 💖`;
 
-let i=0;
-let box=document.getElementById("finalText");
+let i=0, box=document.getElementById("finalText");
 box.style.opacity=1;
 
 function type(){
@@ -294,21 +367,11 @@ document.getElementById("proposal").style.display="block";
 }
 }
 type();
-
-/* hearts */
-for(let j=0;j<20;j++){
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="❤";
-h.style.left=Math.random()*100+"%";
-document.body.appendChild(h);
-}
 }
 
 function answer(){
 document.getElementById("response").innerHTML="You already are… 💖";
 }
-
 </script>
 
 </body>
