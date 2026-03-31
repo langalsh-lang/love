@@ -9,10 +9,18 @@
 <style>
 body{
 margin:0;
-background: linear-gradient(135deg, #1a1a2e, #2b2b45, #3a2b3f);
-color:#e8e8f0;
 font-family:'Playfair Display', serif;
 text-align:center;
+background:#000;
+color:white;
+overflow:hidden;
+transition:1s;
+}
+
+/* LIGHT ON MODE */
+.light{
+background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+color:#2b2b2b;
 }
 
 /* screens */
@@ -22,24 +30,45 @@ height:100vh;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-padding:25px;
+padding:20px;
 }
 
-.active{
-display:flex;
-}
+.active{ display:flex; }
 
-h2{
+h1,h2{
 font-family:'Dancing Script', cursive;
-font-size:32px;
-margin-bottom:20px;
 }
 
-/* text */
+/* buttons */
+button{
+margin:10px;
+padding:10px 20px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+background:white;
+color:black;
+}
+
+/* balloons */
+.balloon{
+position:absolute;
+bottom:-100px;
+width:40px;
+height:50px;
+background:red;
+border-radius:50%;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{ transform:translateY(0);}
+100%{ transform:translateY(-120vh);}
+}
+
+/* text animation */
 .text{
 max-width:600px;
-line-height:1.9;
-font-size:17px;
 opacity:0;
 animation:fadeIn 2s forwards;
 }
@@ -47,232 +76,168 @@ animation:fadeIn 2s forwards;
 @keyframes fadeIn{
 to{opacity:1;}
 }
-
-/* button */
-button{
-margin-top:25px;
-padding:10px 20px;
-border:none;
-border-radius:25px;
-background:rgba(255,255,255,0.08);
-color:white;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:rgba(255,255,255,0.15);
-}
-
-/* hidden */
-.hidden{
-display:none;
-margin-top:20px;
-opacity:0.8;
-}
 </style>
 </head>
 
 <body>
 
-<!-- intro -->
-<div id="intro" class="screen active" onclick="goLock()">
-<h2>begin</h2>
-</div>
-
-<!-- lock -->
-<div id="lock" class="screen">
-<h2>enter our date</h2>
-<input id="pass" type="password" placeholder="01042020">
-<button onclick="unlock()">enter</button>
-</div>
-
-<!-- music -->
+<!-- MUSIC -->
 <audio id="music" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3">
 </audio>
 
-<!-- step 1 -->
-<div id="s1" class="screen">
-<div class="text">
-It all started on January 20, 2020.  
-A normal day, a normal biochemistry class…  
-
-Nothing about that moment seemed special.  
-And yet, that was the first time I saw you.  
-
-Something changed quietly that day…  
-something I would only understand later.
-</div>
-<button onclick="next(2)">continue</button>
+<!-- SCREEN 1 -->
+<div id="s1" class="screen active">
+<h1>Yayyy 💖 It's our special day</h1>
+<button onclick="next(2)">Next</button>
 </div>
 
-<!-- step 2 -->
+<!-- SCREEN 2 -->
 <div id="s2" class="screen">
-<div class="text">
-We started talking slowly…  
-just simple conversations at first.  
-
-But days turned into something more.  
-Without even realizing it,  
-you became a part of my everyday life.
-</div>
-<button onclick="next(3)">continue</button>
+<h2>Chalo let's make this special ✨</h2>
+<button onclick="next(3)">Next</button>
 </div>
 
-<!-- step 3 -->
+<!-- SCREEN 3 -->
 <div id="s3" class="screen">
-<div class="text">
-Then came March 31.  
-A night that felt like everything was breaking.  
-
-We fought like it was the end…  
-like we were losing everything we had.
-</div>
-<button onclick="next(4)">continue</button>
+<h2>Are you ready?</h2>
+<button onclick="next(4)">Yes 💕</button>
+<button onclick="noFun()">No 😒</button>
 </div>
 
-<!-- step 4 -->
+<!-- SCREEN 4 -->
 <div id="s4" class="screen">
-<div class="text">
-But the very next day… April 1…  
-
-We chose each other again.  
-Not out of habit…  
-but because we truly meant to stay.
-</div>
-<button onclick="next(5)">continue</button>
+<h2>Turn the lights on</h2>
+<button onclick="lightsOn()">Lights On 💡</button>
 </div>
 
-<!-- step 5 -->
+<!-- SCREEN 5 -->
 <div id="s5" class="screen">
-<div class="text">
-And today… after six years…  
-
-After every storm we faced…  
-we are still here.  
-
-Still choosing each other.
-</div>
-<button onclick="next(6)">continue</button>
+<h2>Play our music 🎶</h2>
+<button onclick="playMusic()">Play Music</button>
 </div>
 
-<!-- step 6 -->
+<!-- SCREEN 6 -->
 <div id="s6" class="screen">
-<div class="text">
-You showed up for me when it mattered the most.  
-Hospital visits… quiet support…  
-
-You didn’t need words.  
-Your presence said everything.
-</div>
-<button onclick="next(7)">continue</button>
+<h1>Happy Anniversary ❤️</h1>
+<button onclick="decorate()">Decorate 🎉</button>
 </div>
 
-<!-- step 7 -->
+<!-- SCREEN 7 -->
 <div id="s7" class="screen">
-<div class="text">
-When I was flying to India,  
-you followed my entire journey.  
-
-Every moment… every update…  
-as if your heart was travelling with me.
-</div>
-<button onclick="next(8)">continue</button>
+<h2>Let’s celebrate 🎈</h2>
+<button onclick="balloons()">Fly Balloons</button>
 </div>
 
-<!-- step 8 -->
+<!-- STORY START -->
 <div id="s8" class="screen">
 <div class="text">
-You travelled 24 hours…  
-just to spend 6 hours with me.  
+It all started on January 20, 2020...  
+A normal day, a normal biochemistry class…  
 
-And somehow…  
-that says everything about us.
+But something changed quietly that day…
 </div>
-<button onclick="next(9)">continue</button>
+<button onclick="next(9)">Next</button>
 </div>
 
-<!-- LOVE TASK -->
 <div id="s9" class="screen">
 <div class="text">
-Before going further…  
-
-Pause for a moment.  
-Think about us…  
-
-Every memory… every feeling…  
-everything we have been through.
+We started talking slowly…  
+You became part of my everyday life.
 </div>
-<button onclick="next(10)">continue</button>
+<button onclick="next(10)">Next</button>
 </div>
 
-<!-- hidden -->
 <div id="s10" class="screen">
 <div class="text">
-There are so many moments…  
-small ones, big ones…  
-
-But every single one  
-is a reason I stayed.
+March 31… we fought like everything was ending.
+</div>
+<button onclick="next(11)">Next</button>
 </div>
 
-<button onclick="showHidden()">reveal something</button>
-
-<div id="hidden" class="hidden">
-I never stopped choosing you… not even once.
-</div>
-
-<br><br>
-<button onclick="next(11)">continue</button>
-</div>
-
-<!-- final -->
 <div id="s11" class="screen">
 <div class="text">
-I am not asking for anything.  
-
-No promises… no conditions…  
-
-Just stay beside me.  
-For the rest of this life.
+April 1… we chose each other again.
+</div>
+<button onclick="next(12)">Next</button>
 </div>
 
-<button onclick="finalMsg()">final</button>
+<div id="s12" class="screen">
+<div class="text">
+After everything… we are still here.  
+Still choosing each other.
+</div>
+<button onclick="next(13)">Next</button>
+</div>
 
-<div id="end" class="hidden">
+<div id="s13" class="screen">
+<div class="text">
+You showed up when I needed you the most…  
+Your presence meant everything.
+</div>
+<button onclick="next(14)">Next</button>
+</div>
+
+<div id="s14" class="screen">
+<div class="text">
+You travelled 24 hours… just for me.  
+And that says everything.
+</div>
+<button onclick="next(15)">Next</button>
+</div>
+
+<div id="s15" class="screen">
+<div class="text">
+I never stopped choosing you… not even once.
+</div>
+<button onclick="next(16)">Final</button>
+</div>
+
+<div id="s16" class="screen">
+<div class="text">
 You are my home.  
 My peace.  
 My forever.  
-— A
+
+— A 💖
 </div>
 </div>
 
 <script>
-function goLock(){
-document.getElementById("intro").classList.remove("active");
-document.getElementById("lock").classList.add("active");
-}
-
-function unlock(){
-if(document.getElementById("pass").value==="01042020"){
-document.getElementById("lock").classList.remove("active");
-document.getElementById("s1").classList.add("active");
-document.getElementById("music").play();
-}
-}
-
 function next(n){
 document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
 document.getElementById("s"+n).classList.add('active');
 }
 
-function showHidden(){
-document.getElementById("hidden").style.display="block";
+function noFun(){
+alert("No option 😄 You HAVE to continue ❤️");
 }
 
-function finalMsg(){
-document.getElementById("end").style.display="block";
+function lightsOn(){
+document.body.classList.add("light");
+next(5);
+}
+
+function playMusic(){
+let music=document.getElementById("music");
+music.play().catch(()=>{});
+next(6);
+}
+
+function decorate(){
+document.body.style.background="linear-gradient(135deg,#ff758c,#ff7eb3)";
+next(7);
+}
+
+function balloons(){
+for(let i=0;i<15;i++){
+let b=document.createElement("div");
+b.className="balloon";
+b.style.left=Math.random()*100+"%";
+b.style.background=["red","pink","yellow","blue"][Math.floor(Math.random()*4)];
+document.body.appendChild(b);
+}
+next(8);
 }
 </script>
 
