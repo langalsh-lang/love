@@ -17,13 +17,11 @@ overflow:hidden;
 transition:1s;
 }
 
-/* LIGHT ON */
 .light{
 background: linear-gradient(135deg,#1a2a3a,#243b55);
 color:#f5e6c8;
 }
 
-/* screens */
 .screen{
 display:none;
 height:100vh;
@@ -32,14 +30,12 @@ align-items:center;
 flex-direction:column;
 padding:20px;
 }
-
 .active{ display:flex; }
 
 h1,h2{
 font-family:'Dancing Script', cursive;
 }
 
-/* button */
 button{
 margin:10px;
 padding:10px 20px;
@@ -50,12 +46,21 @@ background:#d4af37;
 color:black;
 }
 
-/* input */
 input{
 padding:10px;
 border-radius:20px;
 border:none;
-margin-top:10px;
+}
+
+.text{
+max-width:600px;
+line-height:1.9;
+opacity:0;
+animation:fade 2s forwards;
+}
+
+@keyframes fade{
+to{opacity:1;}
 }
 
 /* balloons */
@@ -65,35 +70,11 @@ bottom:-100px;
 width:40px;
 height:50px;
 border-radius:50%;
-animation:float 8s linear infinite;
+animation:float 6s linear forwards;
 }
-
 @keyframes float{
-0%{ transform:translateY(0);}
-100%{ transform:translateY(-120vh);}
-}
-
-/* decoration */
-.banner{
-font-size:28px;
-margin-bottom:20px;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{ text-shadow:0 0 10px gold;}
-to{ text-shadow:0 0 25px white;}
-}
-
-/* fade text */
-.text{
-max-width:600px;
-opacity:0;
-animation:fade 2s forwards;
-}
-
-@keyframes fade{
-to{opacity:1;}
+0%{transform:translateY(0);}
+100%{transform:translateY(-120vh);}
 }
 
 /* GIF */
@@ -106,11 +87,11 @@ border-radius:20px;
 /* FINAL */
 .finalText{
 max-width:600px;
-font-size:20px;
+font-size:26px;
 line-height:2;
-white-space:pre-line;
+font-family:'Dancing Script', cursive;
 opacity:0;
-margin-bottom:20px;
+white-space:pre-line;
 }
 
 .heart{
@@ -130,7 +111,7 @@ animation:rise 4s linear infinite;
 <body>
 
 <!-- INTRO -->
-<div id="intro" class="screen active" onclick="nextScreen('lock')">
+<div id="intro" class="screen active" onclick="goLock()">
 <h1>Tap to Begin ✨</h1>
 </div>
 
@@ -145,100 +126,158 @@ animation:rise 4s linear infinite;
 <div id="s1" class="screen">
 <img class="gif" src="https://media.tenor.com/0AVbKGY_MxMAAAAC/bubu-dudu-love.gif">
 <h1>Yayyy 💖 It's our special day</h1>
-<button onclick="nextScreen('s2')">Next</button>
+<button onclick="next(2)">Next</button>
 </div>
 
 <div id="s2" class="screen">
 <img class="gif" src="https://media.tenor.com/VgG7x9wM6VYAAAAC/bubu-dudu-happy.gif">
 <h2>Chalo let's make this special ✨</h2>
-<button onclick="nextScreen('s3')">Next</button>
+<button onclick="next(3)">Next</button>
 </div>
 
 <div id="s3" class="screen">
 <img class="gif" src="https://media.tenor.com/2roX3uxFazQAAAAC/bubu-dudu-waiting.gif">
 <h2>Are you ready?</h2>
-<button onclick="nextScreen('s4')">Yes 💕</button>
+<button onclick="next(4)">Yes 💕</button>
 <button onclick="alert('No option 😄')">No 😒</button>
 </div>
 
-<!-- LIGHT -->
 <div id="s4" class="screen">
 <img class="gif" src="https://media.tenor.com/iqfh5gQJqZQAAAAC/bubu-dudu-light.gif">
 <h2>Turn the lights on 💡</h2>
 <button onclick="lightsOn()">Lights On</button>
 </div>
 
-<!-- DECOR -->
 <div id="s5" class="screen">
-<img class="gif" src="https://media.tenor.com/6c8WlX4e9n8AAAAC/bubu-dudu-celebration.gif">
-<div class="banner">✨ Happy Anniversary ✨</div>
-<button onclick="nextScreen('s6')">Continue</button>
+<h1>✨ Happy Anniversary ✨</h1>
+<button onclick="startBalloons()">Celebrate 🎈</button>
 </div>
 
-<!-- BALLOONS -->
+<!-- STORY (YOUR ORIGINAL) -->
 <div id="s6" class="screen">
-<img class="gif" src="https://media.tenor.com/7n6kK6G7z7kAAAAC/bubu-dudu-balloon.gif">
-<h2>Let’s celebrate 🎈</h2>
-<button onclick="startBalloons()">Fly Balloons</button>
+<div class="text">
+It all started on January 20, 2020.  
+A normal day, a normal biochemistry class…  
+
+Nothing about that moment seemed special.  
+And yet, that was the first time I saw you.  
+
+Something changed quietly that day…  
+something I would only understand later.
+</div>
+<button onclick="next(7)">continue</button>
 </div>
 
-<!-- STORY -->
 <div id="s7" class="screen">
 <div class="text">
-It all started on January 20, 2020…  
-A normal day… but something changed.
+We started talking slowly…  
+just simple conversations at first.  
+
+But days turned into something more.  
+Without even realizing it,  
+you became a part of my everyday life.
 </div>
-<button onclick="nextScreen('s8')">Next</button>
+<button onclick="next(8)">continue</button>
 </div>
 
 <div id="s8" class="screen">
 <div class="text">
-You became part of my everyday life.
+Then came March 31.  
+A night that felt like everything was breaking.  
+
+We fought like it was the end…  
+like we were losing everything we had.
 </div>
-<button onclick="nextScreen('s9')">Next</button>
+<button onclick="next(9)">continue</button>
 </div>
 
 <div id="s9" class="screen">
 <div class="text">
-We fought… but we never gave up.
+But the very next day… April 1…  
+
+We chose each other again.  
+Not out of habit…  
+but because we truly meant to stay.
 </div>
-<button onclick="nextScreen('s10')">Next</button>
+<button onclick="next(10)">continue</button>
 </div>
 
 <div id="s10" class="screen">
 <div class="text">
-We chose each other again… and again.
+And today… after six years…  
+
+After every storm we faced…  
+we are still here.  
+
+Still choosing each other.
 </div>
-<button onclick="nextScreen('s11')">Next</button>
+<button onclick="next(11)">continue</button>
+</div>
+
+<div id="s11" class="screen">
+<div class="text">
+You showed up for me when it mattered the most.  
+Hospital visits… quiet support…  
+
+You didn’t need words.  
+Your presence said everything.
+</div>
+<button onclick="next(12)">continue</button>
+</div>
+
+<div id="s12" class="screen">
+<div class="text">
+When I was flying to India,  
+you followed my entire journey.  
+
+Every moment… every update…  
+as if your heart was travelling with me.
+</div>
+<button onclick="next(13)">continue</button>
+</div>
+
+<div id="s13" class="screen">
+<div class="text">
+You travelled 24 hours…  
+just to spend 6 hours with me.  
+
+And somehow…  
+that says everything about us.
+</div>
+<button onclick="next(14)">continue</button>
 </div>
 
 <!-- FINAL -->
-<div id="s11" class="screen">
-
+<div id="s14" class="screen">
 <div id="finalText" class="finalText"></div>
-
 <button onclick="startFinal()">Open My Heart 💌</button>
-
 </div>
 
 <script>
-function nextScreen(id){
-document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
+function goLock(){
+nextScreen('lock');
 }
 
 function unlock(){
-let val=document.getElementById("pass").value;
-if(val==="01042020"){
+if(document.getElementById("pass").value==="01042020"){
 nextScreen('s1');
 }else{
 alert("Wrong date 😄");
 }
 }
 
+function next(n){
+nextScreen('s'+n);
+}
+
+function nextScreen(id){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
 function lightsOn(){
 document.body.classList.add("light");
-nextScreen('s5');
+next(5);
 }
 
 function startBalloons(){
@@ -249,28 +288,12 @@ b.style.left=Math.random()*100+"%";
 b.style.background=["gold","white","silver"][Math.floor(Math.random()*3)];
 document.body.appendChild(b);
 }
-nextScreen('s7');
+setTimeout(()=>next(6),2000);
 }
 
-/* FINAL ANIMATION */
+/* FINAL */
 function startFinal(){
-
-let text = `I don’t know how we made it this far...
-
-Through every fight,
-every silence,
-every moment that almost broke us...
-
-But we did.
-
-And if I had to choose again —
-in every lifetime,
-in every version of this world...
-
-I would still choose you.
-
-Not because it's easy…
-but because it's YOU.
+let text=`I would still choose you… in every lifetime.
 
 You are my home.
 My peace.
@@ -279,27 +302,23 @@ My forever.
 — A 💖`;
 
 let i=0;
-let speed=40;
 let box=document.getElementById("finalText");
 box.style.opacity=1;
-box.innerHTML="";
 
 function type(){
 if(i<text.length){
-box.innerHTML += text.charAt(i);
+box.innerHTML+=text.charAt(i);
 i++;
-setTimeout(type,speed);
+setTimeout(type,40);
 }
 }
 type();
 
-/* hearts */
-for(let j=0;j<30;j++){
+for(let j=0;j<25;j++){
 let h=document.createElement("div");
 h.className="heart";
 h.innerHTML="❤";
 h.style.left=Math.random()*100+"%";
-h.style.fontSize=(15+Math.random()*20)+"px";
 document.body.appendChild(h);
 }
 }
